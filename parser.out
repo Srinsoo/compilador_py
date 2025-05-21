@@ -1,0 +1,1723 @@
+Created by PLY version 3.11 (http://www.dabeaz.com/ply)
+
+Grammar
+
+Rule 0     S' -> program
+Rule 1     program -> statement_list
+Rule 2     statement_list -> statement
+Rule 3     statement_list -> statement statement_list
+Rule 4     statement -> assignment DPOINTS
+Rule 5     statement -> write DPOINTS
+Rule 6     statement -> capture DPOINTS
+Rule 7     statement -> expression DPOINTS
+Rule 8     statement -> if_statement
+Rule 9     statement -> while_statement
+Rule 10    write -> WRITE ( STRING )
+Rule 11    write -> WRITE ( expression )
+Rule 12    write -> WRITE ( STRING , expression )
+Rule 13    capture -> CAPTURE ( ID )
+Rule 14    while_statement -> WHILE condition DO statement_list ENDWHILE
+Rule 15    if_statement -> IF condition THEN statement_list opt_else ENDIF
+Rule 16    opt_else -> ELSE statement_list
+Rule 17    opt_else -> empty
+Rule 18    condition -> ( boolean_expr )
+Rule 19    boolean_expr -> expression relational_operator expression
+Rule 20    boolean_expr -> expression EQUALS expression
+Rule 21    boolean_expr -> expression NOTEQ expression
+Rule 22    boolean_expr -> expression < expression
+Rule 23    boolean_expr -> expression > expression
+Rule 24    boolean_expr -> expression LESSEQ expression
+Rule 25    boolean_expr -> expression GREATEREQ expression
+Rule 26    boolean_expr -> expression AND expression
+Rule 27    boolean_expr -> expression OR expression
+Rule 28    boolean_expr -> NOT expression
+Rule 29    relational_operator -> <
+Rule 30    relational_operator -> >
+Rule 31    relational_operator -> LESSEQ
+Rule 32    relational_operator -> GREATEREQ
+Rule 33    relational_operator -> EQUALS
+Rule 34    relational_operator -> NOTEQ
+Rule 35    assignment -> ID ASSIGN expression
+Rule 36    assignment -> ID ASSIGN boolean_expr
+Rule 37    expression -> term
+Rule 38    expression -> expression + term
+Rule 39    expression -> expression - term
+Rule 40    expression -> condition
+Rule 41    term -> factor
+Rule 42    term -> term * factor
+Rule 43    term -> term / factor
+Rule 44    factor -> NUMBER
+Rule 45    factor -> ( expression )
+Rule 46    factor -> ID
+Rule 47    empty -> <empty>
+
+Terminals, with rules where they appear
+
+(                    : 10 11 12 13 18 45
+)                    : 10 11 12 13 18 45
+*                    : 42
++                    : 38
+,                    : 12
+-                    : 39
+/                    : 43
+<                    : 22 29
+>                    : 23 30
+AND                  : 26
+ASSIGN               : 35 36
+CAPTURE              : 13
+DO                   : 14
+DPOINTS              : 4 5 6 7
+ELSE                 : 16
+ENDIF                : 15
+ENDWHILE             : 14
+EQUALS               : 20 33
+GREATEREQ            : 25 32
+ID                   : 13 35 36 46
+IF                   : 15
+LESSEQ               : 24 31
+NOT                  : 28
+NOTEQ                : 21 34
+NUMBER               : 44
+OR                   : 27
+STRING               : 10 12
+THEN                 : 15
+WHILE                : 14
+WRITE                : 10 11 12
+error                : 
+
+Nonterminals, with rules where they appear
+
+assignment           : 4
+boolean_expr         : 18 36
+capture              : 6
+condition            : 14 15 40
+empty                : 17
+expression           : 7 11 12 19 19 20 20 21 21 22 22 23 23 24 24 25 25 26 26 27 27 28 35 38 39 45
+factor               : 41 42 43
+if_statement         : 8
+opt_else             : 15
+program              : 0
+relational_operator  : 19
+statement            : 2 3
+statement_list       : 1 3 14 15 16
+term                 : 37 38 39 42 43
+while_statement      : 9
+write                : 5
+
+Parsing method: LALR
+
+state 0
+
+    (0) S' -> . program
+    (1) program -> . statement_list
+    (2) statement_list -> . statement
+    (3) statement_list -> . statement statement_list
+    (4) statement -> . assignment DPOINTS
+    (5) statement -> . write DPOINTS
+    (6) statement -> . capture DPOINTS
+    (7) statement -> . expression DPOINTS
+    (8) statement -> . if_statement
+    (9) statement -> . while_statement
+    (35) assignment -> . ID ASSIGN expression
+    (36) assignment -> . ID ASSIGN boolean_expr
+    (10) write -> . WRITE ( STRING )
+    (11) write -> . WRITE ( expression )
+    (12) write -> . WRITE ( STRING , expression )
+    (13) capture -> . CAPTURE ( ID )
+    (37) expression -> . term
+    (38) expression -> . expression + term
+    (39) expression -> . expression - term
+    (40) expression -> . condition
+    (15) if_statement -> . IF condition THEN statement_list opt_else ENDIF
+    (14) while_statement -> . WHILE condition DO statement_list ENDWHILE
+    (41) term -> . factor
+    (42) term -> . term * factor
+    (43) term -> . term / factor
+    (18) condition -> . ( boolean_expr )
+    (44) factor -> . NUMBER
+    (45) factor -> . ( expression )
+    (46) factor -> . ID
+
+    ID              shift and go to state 10
+    WRITE           shift and go to state 11
+    CAPTURE         shift and go to state 13
+    IF              shift and go to state 16
+    WHILE           shift and go to state 17
+    (               shift and go to state 12
+    NUMBER          shift and go to state 19
+
+    program                        shift and go to state 1
+    statement_list                 shift and go to state 2
+    statement                      shift and go to state 3
+    assignment                     shift and go to state 4
+    write                          shift and go to state 5
+    capture                        shift and go to state 6
+    expression                     shift and go to state 7
+    if_statement                   shift and go to state 8
+    while_statement                shift and go to state 9
+    term                           shift and go to state 14
+    condition                      shift and go to state 15
+    factor                         shift and go to state 18
+
+state 1
+
+    (0) S' -> program .
+
+
+
+state 2
+
+    (1) program -> statement_list .
+
+    $end            reduce using rule 1 (program -> statement_list .)
+
+
+state 3
+
+    (2) statement_list -> statement .
+    (3) statement_list -> statement . statement_list
+    (2) statement_list -> . statement
+    (3) statement_list -> . statement statement_list
+    (4) statement -> . assignment DPOINTS
+    (5) statement -> . write DPOINTS
+    (6) statement -> . capture DPOINTS
+    (7) statement -> . expression DPOINTS
+    (8) statement -> . if_statement
+    (9) statement -> . while_statement
+    (35) assignment -> . ID ASSIGN expression
+    (36) assignment -> . ID ASSIGN boolean_expr
+    (10) write -> . WRITE ( STRING )
+    (11) write -> . WRITE ( expression )
+    (12) write -> . WRITE ( STRING , expression )
+    (13) capture -> . CAPTURE ( ID )
+    (37) expression -> . term
+    (38) expression -> . expression + term
+    (39) expression -> . expression - term
+    (40) expression -> . condition
+    (15) if_statement -> . IF condition THEN statement_list opt_else ENDIF
+    (14) while_statement -> . WHILE condition DO statement_list ENDWHILE
+    (41) term -> . factor
+    (42) term -> . term * factor
+    (43) term -> . term / factor
+    (18) condition -> . ( boolean_expr )
+    (44) factor -> . NUMBER
+    (45) factor -> . ( expression )
+    (46) factor -> . ID
+
+    $end            reduce using rule 2 (statement_list -> statement .)
+    ELSE            reduce using rule 2 (statement_list -> statement .)
+    ENDIF           reduce using rule 2 (statement_list -> statement .)
+    ENDWHILE        reduce using rule 2 (statement_list -> statement .)
+    ID              shift and go to state 10
+    WRITE           shift and go to state 11
+    CAPTURE         shift and go to state 13
+    IF              shift and go to state 16
+    WHILE           shift and go to state 17
+    (               shift and go to state 12
+    NUMBER          shift and go to state 19
+
+    statement                      shift and go to state 3
+    statement_list                 shift and go to state 20
+    assignment                     shift and go to state 4
+    write                          shift and go to state 5
+    capture                        shift and go to state 6
+    expression                     shift and go to state 7
+    if_statement                   shift and go to state 8
+    while_statement                shift and go to state 9
+    term                           shift and go to state 14
+    condition                      shift and go to state 15
+    factor                         shift and go to state 18
+
+state 4
+
+    (4) statement -> assignment . DPOINTS
+
+    DPOINTS         shift and go to state 21
+
+
+state 5
+
+    (5) statement -> write . DPOINTS
+
+    DPOINTS         shift and go to state 22
+
+
+state 6
+
+    (6) statement -> capture . DPOINTS
+
+    DPOINTS         shift and go to state 23
+
+
+state 7
+
+    (7) statement -> expression . DPOINTS
+    (38) expression -> expression . + term
+    (39) expression -> expression . - term
+
+    DPOINTS         shift and go to state 24
+    +               shift and go to state 25
+    -               shift and go to state 26
+
+
+state 8
+
+    (8) statement -> if_statement .
+
+    ID              reduce using rule 8 (statement -> if_statement .)
+    WRITE           reduce using rule 8 (statement -> if_statement .)
+    CAPTURE         reduce using rule 8 (statement -> if_statement .)
+    IF              reduce using rule 8 (statement -> if_statement .)
+    WHILE           reduce using rule 8 (statement -> if_statement .)
+    (               reduce using rule 8 (statement -> if_statement .)
+    NUMBER          reduce using rule 8 (statement -> if_statement .)
+    $end            reduce using rule 8 (statement -> if_statement .)
+    ELSE            reduce using rule 8 (statement -> if_statement .)
+    ENDIF           reduce using rule 8 (statement -> if_statement .)
+    ENDWHILE        reduce using rule 8 (statement -> if_statement .)
+
+
+state 9
+
+    (9) statement -> while_statement .
+
+    ID              reduce using rule 9 (statement -> while_statement .)
+    WRITE           reduce using rule 9 (statement -> while_statement .)
+    CAPTURE         reduce using rule 9 (statement -> while_statement .)
+    IF              reduce using rule 9 (statement -> while_statement .)
+    WHILE           reduce using rule 9 (statement -> while_statement .)
+    (               reduce using rule 9 (statement -> while_statement .)
+    NUMBER          reduce using rule 9 (statement -> while_statement .)
+    $end            reduce using rule 9 (statement -> while_statement .)
+    ELSE            reduce using rule 9 (statement -> while_statement .)
+    ENDIF           reduce using rule 9 (statement -> while_statement .)
+    ENDWHILE        reduce using rule 9 (statement -> while_statement .)
+
+
+state 10
+
+    (35) assignment -> ID . ASSIGN expression
+    (36) assignment -> ID . ASSIGN boolean_expr
+    (46) factor -> ID .
+
+    ASSIGN          shift and go to state 27
+    *               reduce using rule 46 (factor -> ID .)
+    /               reduce using rule 46 (factor -> ID .)
+    DPOINTS         reduce using rule 46 (factor -> ID .)
+    +               reduce using rule 46 (factor -> ID .)
+    -               reduce using rule 46 (factor -> ID .)
+
+
+state 11
+
+    (10) write -> WRITE . ( STRING )
+    (11) write -> WRITE . ( expression )
+    (12) write -> WRITE . ( STRING , expression )
+
+    (               shift and go to state 28
+
+
+state 12
+
+    (18) condition -> ( . boolean_expr )
+    (45) factor -> ( . expression )
+    (19) boolean_expr -> . expression relational_operator expression
+    (20) boolean_expr -> . expression EQUALS expression
+    (21) boolean_expr -> . expression NOTEQ expression
+    (22) boolean_expr -> . expression < expression
+    (23) boolean_expr -> . expression > expression
+    (24) boolean_expr -> . expression LESSEQ expression
+    (25) boolean_expr -> . expression GREATEREQ expression
+    (26) boolean_expr -> . expression AND expression
+    (27) boolean_expr -> . expression OR expression
+    (28) boolean_expr -> . NOT expression
+    (37) expression -> . term
+    (38) expression -> . expression + term
+    (39) expression -> . expression - term
+    (40) expression -> . condition
+    (41) term -> . factor
+    (42) term -> . term * factor
+    (43) term -> . term / factor
+    (18) condition -> . ( boolean_expr )
+    (44) factor -> . NUMBER
+    (45) factor -> . ( expression )
+    (46) factor -> . ID
+
+    NOT             shift and go to state 31
+    (               shift and go to state 12
+    NUMBER          shift and go to state 19
+    ID              shift and go to state 32
+
+    boolean_expr                   shift and go to state 29
+    expression                     shift and go to state 30
+    term                           shift and go to state 14
+    condition                      shift and go to state 15
+    factor                         shift and go to state 18
+
+state 13
+
+    (13) capture -> CAPTURE . ( ID )
+
+    (               shift and go to state 33
+
+
+state 14
+
+    (37) expression -> term .
+    (42) term -> term . * factor
+    (43) term -> term . / factor
+
+    DPOINTS         reduce using rule 37 (expression -> term .)
+    +               reduce using rule 37 (expression -> term .)
+    -               reduce using rule 37 (expression -> term .)
+    )               reduce using rule 37 (expression -> term .)
+    EQUALS          reduce using rule 37 (expression -> term .)
+    NOTEQ           reduce using rule 37 (expression -> term .)
+    <               reduce using rule 37 (expression -> term .)
+    >               reduce using rule 37 (expression -> term .)
+    LESSEQ          reduce using rule 37 (expression -> term .)
+    GREATEREQ       reduce using rule 37 (expression -> term .)
+    AND             reduce using rule 37 (expression -> term .)
+    OR              reduce using rule 37 (expression -> term .)
+    *               shift and go to state 34
+    /               shift and go to state 35
+
+
+state 15
+
+    (40) expression -> condition .
+
+    DPOINTS         reduce using rule 40 (expression -> condition .)
+    +               reduce using rule 40 (expression -> condition .)
+    -               reduce using rule 40 (expression -> condition .)
+    )               reduce using rule 40 (expression -> condition .)
+    EQUALS          reduce using rule 40 (expression -> condition .)
+    NOTEQ           reduce using rule 40 (expression -> condition .)
+    <               reduce using rule 40 (expression -> condition .)
+    >               reduce using rule 40 (expression -> condition .)
+    LESSEQ          reduce using rule 40 (expression -> condition .)
+    GREATEREQ       reduce using rule 40 (expression -> condition .)
+    AND             reduce using rule 40 (expression -> condition .)
+    OR              reduce using rule 40 (expression -> condition .)
+
+
+state 16
+
+    (15) if_statement -> IF . condition THEN statement_list opt_else ENDIF
+    (18) condition -> . ( boolean_expr )
+
+    (               shift and go to state 37
+
+    condition                      shift and go to state 36
+
+state 17
+
+    (14) while_statement -> WHILE . condition DO statement_list ENDWHILE
+    (18) condition -> . ( boolean_expr )
+
+    (               shift and go to state 37
+
+    condition                      shift and go to state 38
+
+state 18
+
+    (41) term -> factor .
+
+    *               reduce using rule 41 (term -> factor .)
+    /               reduce using rule 41 (term -> factor .)
+    DPOINTS         reduce using rule 41 (term -> factor .)
+    +               reduce using rule 41 (term -> factor .)
+    -               reduce using rule 41 (term -> factor .)
+    )               reduce using rule 41 (term -> factor .)
+    EQUALS          reduce using rule 41 (term -> factor .)
+    NOTEQ           reduce using rule 41 (term -> factor .)
+    <               reduce using rule 41 (term -> factor .)
+    >               reduce using rule 41 (term -> factor .)
+    LESSEQ          reduce using rule 41 (term -> factor .)
+    GREATEREQ       reduce using rule 41 (term -> factor .)
+    AND             reduce using rule 41 (term -> factor .)
+    OR              reduce using rule 41 (term -> factor .)
+
+
+state 19
+
+    (44) factor -> NUMBER .
+
+    *               reduce using rule 44 (factor -> NUMBER .)
+    /               reduce using rule 44 (factor -> NUMBER .)
+    DPOINTS         reduce using rule 44 (factor -> NUMBER .)
+    +               reduce using rule 44 (factor -> NUMBER .)
+    -               reduce using rule 44 (factor -> NUMBER .)
+    )               reduce using rule 44 (factor -> NUMBER .)
+    EQUALS          reduce using rule 44 (factor -> NUMBER .)
+    NOTEQ           reduce using rule 44 (factor -> NUMBER .)
+    <               reduce using rule 44 (factor -> NUMBER .)
+    >               reduce using rule 44 (factor -> NUMBER .)
+    LESSEQ          reduce using rule 44 (factor -> NUMBER .)
+    GREATEREQ       reduce using rule 44 (factor -> NUMBER .)
+    AND             reduce using rule 44 (factor -> NUMBER .)
+    OR              reduce using rule 44 (factor -> NUMBER .)
+
+
+state 20
+
+    (3) statement_list -> statement statement_list .
+
+    $end            reduce using rule 3 (statement_list -> statement statement_list .)
+    ELSE            reduce using rule 3 (statement_list -> statement statement_list .)
+    ENDIF           reduce using rule 3 (statement_list -> statement statement_list .)
+    ENDWHILE        reduce using rule 3 (statement_list -> statement statement_list .)
+
+
+state 21
+
+    (4) statement -> assignment DPOINTS .
+
+    ID              reduce using rule 4 (statement -> assignment DPOINTS .)
+    WRITE           reduce using rule 4 (statement -> assignment DPOINTS .)
+    CAPTURE         reduce using rule 4 (statement -> assignment DPOINTS .)
+    IF              reduce using rule 4 (statement -> assignment DPOINTS .)
+    WHILE           reduce using rule 4 (statement -> assignment DPOINTS .)
+    (               reduce using rule 4 (statement -> assignment DPOINTS .)
+    NUMBER          reduce using rule 4 (statement -> assignment DPOINTS .)
+    $end            reduce using rule 4 (statement -> assignment DPOINTS .)
+    ELSE            reduce using rule 4 (statement -> assignment DPOINTS .)
+    ENDIF           reduce using rule 4 (statement -> assignment DPOINTS .)
+    ENDWHILE        reduce using rule 4 (statement -> assignment DPOINTS .)
+
+
+state 22
+
+    (5) statement -> write DPOINTS .
+
+    ID              reduce using rule 5 (statement -> write DPOINTS .)
+    WRITE           reduce using rule 5 (statement -> write DPOINTS .)
+    CAPTURE         reduce using rule 5 (statement -> write DPOINTS .)
+    IF              reduce using rule 5 (statement -> write DPOINTS .)
+    WHILE           reduce using rule 5 (statement -> write DPOINTS .)
+    (               reduce using rule 5 (statement -> write DPOINTS .)
+    NUMBER          reduce using rule 5 (statement -> write DPOINTS .)
+    $end            reduce using rule 5 (statement -> write DPOINTS .)
+    ELSE            reduce using rule 5 (statement -> write DPOINTS .)
+    ENDIF           reduce using rule 5 (statement -> write DPOINTS .)
+    ENDWHILE        reduce using rule 5 (statement -> write DPOINTS .)
+
+
+state 23
+
+    (6) statement -> capture DPOINTS .
+
+    ID              reduce using rule 6 (statement -> capture DPOINTS .)
+    WRITE           reduce using rule 6 (statement -> capture DPOINTS .)
+    CAPTURE         reduce using rule 6 (statement -> capture DPOINTS .)
+    IF              reduce using rule 6 (statement -> capture DPOINTS .)
+    WHILE           reduce using rule 6 (statement -> capture DPOINTS .)
+    (               reduce using rule 6 (statement -> capture DPOINTS .)
+    NUMBER          reduce using rule 6 (statement -> capture DPOINTS .)
+    $end            reduce using rule 6 (statement -> capture DPOINTS .)
+    ELSE            reduce using rule 6 (statement -> capture DPOINTS .)
+    ENDIF           reduce using rule 6 (statement -> capture DPOINTS .)
+    ENDWHILE        reduce using rule 6 (statement -> capture DPOINTS .)
+
+
+state 24
+
+    (7) statement -> expression DPOINTS .
+
+    ID              reduce using rule 7 (statement -> expression DPOINTS .)
+    WRITE           reduce using rule 7 (statement -> expression DPOINTS .)
+    CAPTURE         reduce using rule 7 (statement -> expression DPOINTS .)
+    IF              reduce using rule 7 (statement -> expression DPOINTS .)
+    WHILE           reduce using rule 7 (statement -> expression DPOINTS .)
+    (               reduce using rule 7 (statement -> expression DPOINTS .)
+    NUMBER          reduce using rule 7 (statement -> expression DPOINTS .)
+    $end            reduce using rule 7 (statement -> expression DPOINTS .)
+    ELSE            reduce using rule 7 (statement -> expression DPOINTS .)
+    ENDIF           reduce using rule 7 (statement -> expression DPOINTS .)
+    ENDWHILE        reduce using rule 7 (statement -> expression DPOINTS .)
+
+
+state 25
+
+    (38) expression -> expression + . term
+    (41) term -> . factor
+    (42) term -> . term * factor
+    (43) term -> . term / factor
+    (44) factor -> . NUMBER
+    (45) factor -> . ( expression )
+    (46) factor -> . ID
+
+    NUMBER          shift and go to state 19
+    (               shift and go to state 40
+    ID              shift and go to state 32
+
+    term                           shift and go to state 39
+    factor                         shift and go to state 18
+
+state 26
+
+    (39) expression -> expression - . term
+    (41) term -> . factor
+    (42) term -> . term * factor
+    (43) term -> . term / factor
+    (44) factor -> . NUMBER
+    (45) factor -> . ( expression )
+    (46) factor -> . ID
+
+    NUMBER          shift and go to state 19
+    (               shift and go to state 40
+    ID              shift and go to state 32
+
+    term                           shift and go to state 41
+    factor                         shift and go to state 18
+
+state 27
+
+    (35) assignment -> ID ASSIGN . expression
+    (36) assignment -> ID ASSIGN . boolean_expr
+    (37) expression -> . term
+    (38) expression -> . expression + term
+    (39) expression -> . expression - term
+    (40) expression -> . condition
+    (19) boolean_expr -> . expression relational_operator expression
+    (20) boolean_expr -> . expression EQUALS expression
+    (21) boolean_expr -> . expression NOTEQ expression
+    (22) boolean_expr -> . expression < expression
+    (23) boolean_expr -> . expression > expression
+    (24) boolean_expr -> . expression LESSEQ expression
+    (25) boolean_expr -> . expression GREATEREQ expression
+    (26) boolean_expr -> . expression AND expression
+    (27) boolean_expr -> . expression OR expression
+    (28) boolean_expr -> . NOT expression
+    (41) term -> . factor
+    (42) term -> . term * factor
+    (43) term -> . term / factor
+    (18) condition -> . ( boolean_expr )
+    (44) factor -> . NUMBER
+    (45) factor -> . ( expression )
+    (46) factor -> . ID
+
+    NOT             shift and go to state 31
+    (               shift and go to state 12
+    NUMBER          shift and go to state 19
+    ID              shift and go to state 32
+
+    expression                     shift and go to state 42
+    boolean_expr                   shift and go to state 43
+    term                           shift and go to state 14
+    condition                      shift and go to state 15
+    factor                         shift and go to state 18
+
+state 28
+
+    (10) write -> WRITE ( . STRING )
+    (11) write -> WRITE ( . expression )
+    (12) write -> WRITE ( . STRING , expression )
+    (37) expression -> . term
+    (38) expression -> . expression + term
+    (39) expression -> . expression - term
+    (40) expression -> . condition
+    (41) term -> . factor
+    (42) term -> . term * factor
+    (43) term -> . term / factor
+    (18) condition -> . ( boolean_expr )
+    (44) factor -> . NUMBER
+    (45) factor -> . ( expression )
+    (46) factor -> . ID
+
+    STRING          shift and go to state 44
+    (               shift and go to state 12
+    NUMBER          shift and go to state 19
+    ID              shift and go to state 32
+
+    expression                     shift and go to state 45
+    term                           shift and go to state 14
+    condition                      shift and go to state 15
+    factor                         shift and go to state 18
+
+state 29
+
+    (18) condition -> ( boolean_expr . )
+
+    )               shift and go to state 46
+
+
+state 30
+
+    (45) factor -> ( expression . )
+    (19) boolean_expr -> expression . relational_operator expression
+    (20) boolean_expr -> expression . EQUALS expression
+    (21) boolean_expr -> expression . NOTEQ expression
+    (22) boolean_expr -> expression . < expression
+    (23) boolean_expr -> expression . > expression
+    (24) boolean_expr -> expression . LESSEQ expression
+    (25) boolean_expr -> expression . GREATEREQ expression
+    (26) boolean_expr -> expression . AND expression
+    (27) boolean_expr -> expression . OR expression
+    (38) expression -> expression . + term
+    (39) expression -> expression . - term
+    (29) relational_operator -> . <
+    (30) relational_operator -> . >
+    (31) relational_operator -> . LESSEQ
+    (32) relational_operator -> . GREATEREQ
+    (33) relational_operator -> . EQUALS
+    (34) relational_operator -> . NOTEQ
+
+    )               shift and go to state 47
+    EQUALS          shift and go to state 49
+    NOTEQ           shift and go to state 50
+    <               shift and go to state 51
+    >               shift and go to state 52
+    LESSEQ          shift and go to state 53
+    GREATEREQ       shift and go to state 54
+    AND             shift and go to state 55
+    OR              shift and go to state 56
+    +               shift and go to state 25
+    -               shift and go to state 26
+
+    relational_operator            shift and go to state 48
+
+state 31
+
+    (28) boolean_expr -> NOT . expression
+    (37) expression -> . term
+    (38) expression -> . expression + term
+    (39) expression -> . expression - term
+    (40) expression -> . condition
+    (41) term -> . factor
+    (42) term -> . term * factor
+    (43) term -> . term / factor
+    (18) condition -> . ( boolean_expr )
+    (44) factor -> . NUMBER
+    (45) factor -> . ( expression )
+    (46) factor -> . ID
+
+    (               shift and go to state 12
+    NUMBER          shift and go to state 19
+    ID              shift and go to state 32
+
+    expression                     shift and go to state 57
+    term                           shift and go to state 14
+    condition                      shift and go to state 15
+    factor                         shift and go to state 18
+
+state 32
+
+    (46) factor -> ID .
+
+    *               reduce using rule 46 (factor -> ID .)
+    /               reduce using rule 46 (factor -> ID .)
+    )               reduce using rule 46 (factor -> ID .)
+    EQUALS          reduce using rule 46 (factor -> ID .)
+    NOTEQ           reduce using rule 46 (factor -> ID .)
+    <               reduce using rule 46 (factor -> ID .)
+    >               reduce using rule 46 (factor -> ID .)
+    LESSEQ          reduce using rule 46 (factor -> ID .)
+    GREATEREQ       reduce using rule 46 (factor -> ID .)
+    AND             reduce using rule 46 (factor -> ID .)
+    OR              reduce using rule 46 (factor -> ID .)
+    +               reduce using rule 46 (factor -> ID .)
+    -               reduce using rule 46 (factor -> ID .)
+    DPOINTS         reduce using rule 46 (factor -> ID .)
+
+
+state 33
+
+    (13) capture -> CAPTURE ( . ID )
+
+    ID              shift and go to state 58
+
+
+state 34
+
+    (42) term -> term * . factor
+    (44) factor -> . NUMBER
+    (45) factor -> . ( expression )
+    (46) factor -> . ID
+
+    NUMBER          shift and go to state 19
+    (               shift and go to state 40
+    ID              shift and go to state 32
+
+    factor                         shift and go to state 59
+
+state 35
+
+    (43) term -> term / . factor
+    (44) factor -> . NUMBER
+    (45) factor -> . ( expression )
+    (46) factor -> . ID
+
+    NUMBER          shift and go to state 19
+    (               shift and go to state 40
+    ID              shift and go to state 32
+
+    factor                         shift and go to state 60
+
+state 36
+
+    (15) if_statement -> IF condition . THEN statement_list opt_else ENDIF
+
+    THEN            shift and go to state 61
+
+
+state 37
+
+    (18) condition -> ( . boolean_expr )
+    (19) boolean_expr -> . expression relational_operator expression
+    (20) boolean_expr -> . expression EQUALS expression
+    (21) boolean_expr -> . expression NOTEQ expression
+    (22) boolean_expr -> . expression < expression
+    (23) boolean_expr -> . expression > expression
+    (24) boolean_expr -> . expression LESSEQ expression
+    (25) boolean_expr -> . expression GREATEREQ expression
+    (26) boolean_expr -> . expression AND expression
+    (27) boolean_expr -> . expression OR expression
+    (28) boolean_expr -> . NOT expression
+    (37) expression -> . term
+    (38) expression -> . expression + term
+    (39) expression -> . expression - term
+    (40) expression -> . condition
+    (41) term -> . factor
+    (42) term -> . term * factor
+    (43) term -> . term / factor
+    (18) condition -> . ( boolean_expr )
+    (44) factor -> . NUMBER
+    (45) factor -> . ( expression )
+    (46) factor -> . ID
+
+    NOT             shift and go to state 31
+    (               shift and go to state 12
+    NUMBER          shift and go to state 19
+    ID              shift and go to state 32
+
+    boolean_expr                   shift and go to state 29
+    expression                     shift and go to state 62
+    term                           shift and go to state 14
+    condition                      shift and go to state 15
+    factor                         shift and go to state 18
+
+state 38
+
+    (14) while_statement -> WHILE condition . DO statement_list ENDWHILE
+
+    DO              shift and go to state 63
+
+
+state 39
+
+    (38) expression -> expression + term .
+    (42) term -> term . * factor
+    (43) term -> term . / factor
+
+    DPOINTS         reduce using rule 38 (expression -> expression + term .)
+    +               reduce using rule 38 (expression -> expression + term .)
+    -               reduce using rule 38 (expression -> expression + term .)
+    )               reduce using rule 38 (expression -> expression + term .)
+    EQUALS          reduce using rule 38 (expression -> expression + term .)
+    NOTEQ           reduce using rule 38 (expression -> expression + term .)
+    <               reduce using rule 38 (expression -> expression + term .)
+    >               reduce using rule 38 (expression -> expression + term .)
+    LESSEQ          reduce using rule 38 (expression -> expression + term .)
+    GREATEREQ       reduce using rule 38 (expression -> expression + term .)
+    AND             reduce using rule 38 (expression -> expression + term .)
+    OR              reduce using rule 38 (expression -> expression + term .)
+    *               shift and go to state 34
+    /               shift and go to state 35
+
+
+state 40
+
+    (45) factor -> ( . expression )
+    (37) expression -> . term
+    (38) expression -> . expression + term
+    (39) expression -> . expression - term
+    (40) expression -> . condition
+    (41) term -> . factor
+    (42) term -> . term * factor
+    (43) term -> . term / factor
+    (18) condition -> . ( boolean_expr )
+    (44) factor -> . NUMBER
+    (45) factor -> . ( expression )
+    (46) factor -> . ID
+
+    (               shift and go to state 12
+    NUMBER          shift and go to state 19
+    ID              shift and go to state 32
+
+    expression                     shift and go to state 64
+    term                           shift and go to state 14
+    condition                      shift and go to state 15
+    factor                         shift and go to state 18
+
+state 41
+
+    (39) expression -> expression - term .
+    (42) term -> term . * factor
+    (43) term -> term . / factor
+
+    DPOINTS         reduce using rule 39 (expression -> expression - term .)
+    +               reduce using rule 39 (expression -> expression - term .)
+    -               reduce using rule 39 (expression -> expression - term .)
+    )               reduce using rule 39 (expression -> expression - term .)
+    EQUALS          reduce using rule 39 (expression -> expression - term .)
+    NOTEQ           reduce using rule 39 (expression -> expression - term .)
+    <               reduce using rule 39 (expression -> expression - term .)
+    >               reduce using rule 39 (expression -> expression - term .)
+    LESSEQ          reduce using rule 39 (expression -> expression - term .)
+    GREATEREQ       reduce using rule 39 (expression -> expression - term .)
+    AND             reduce using rule 39 (expression -> expression - term .)
+    OR              reduce using rule 39 (expression -> expression - term .)
+    *               shift and go to state 34
+    /               shift and go to state 35
+
+
+state 42
+
+    (35) assignment -> ID ASSIGN expression .
+    (38) expression -> expression . + term
+    (39) expression -> expression . - term
+    (19) boolean_expr -> expression . relational_operator expression
+    (20) boolean_expr -> expression . EQUALS expression
+    (21) boolean_expr -> expression . NOTEQ expression
+    (22) boolean_expr -> expression . < expression
+    (23) boolean_expr -> expression . > expression
+    (24) boolean_expr -> expression . LESSEQ expression
+    (25) boolean_expr -> expression . GREATEREQ expression
+    (26) boolean_expr -> expression . AND expression
+    (27) boolean_expr -> expression . OR expression
+    (29) relational_operator -> . <
+    (30) relational_operator -> . >
+    (31) relational_operator -> . LESSEQ
+    (32) relational_operator -> . GREATEREQ
+    (33) relational_operator -> . EQUALS
+    (34) relational_operator -> . NOTEQ
+
+    DPOINTS         reduce using rule 35 (assignment -> ID ASSIGN expression .)
+    +               shift and go to state 25
+    -               shift and go to state 26
+    EQUALS          shift and go to state 49
+    NOTEQ           shift and go to state 50
+    <               shift and go to state 51
+    >               shift and go to state 52
+    LESSEQ          shift and go to state 53
+    GREATEREQ       shift and go to state 54
+    AND             shift and go to state 55
+    OR              shift and go to state 56
+
+    relational_operator            shift and go to state 48
+
+state 43
+
+    (36) assignment -> ID ASSIGN boolean_expr .
+
+    DPOINTS         reduce using rule 36 (assignment -> ID ASSIGN boolean_expr .)
+
+
+state 44
+
+    (10) write -> WRITE ( STRING . )
+    (12) write -> WRITE ( STRING . , expression )
+
+    )               shift and go to state 65
+    ,               shift and go to state 66
+
+
+state 45
+
+    (11) write -> WRITE ( expression . )
+    (38) expression -> expression . + term
+    (39) expression -> expression . - term
+
+    )               shift and go to state 67
+    +               shift and go to state 25
+    -               shift and go to state 26
+
+
+state 46
+
+    (18) condition -> ( boolean_expr ) .
+
+    DPOINTS         reduce using rule 18 (condition -> ( boolean_expr ) .)
+    +               reduce using rule 18 (condition -> ( boolean_expr ) .)
+    -               reduce using rule 18 (condition -> ( boolean_expr ) .)
+    )               reduce using rule 18 (condition -> ( boolean_expr ) .)
+    EQUALS          reduce using rule 18 (condition -> ( boolean_expr ) .)
+    NOTEQ           reduce using rule 18 (condition -> ( boolean_expr ) .)
+    <               reduce using rule 18 (condition -> ( boolean_expr ) .)
+    >               reduce using rule 18 (condition -> ( boolean_expr ) .)
+    LESSEQ          reduce using rule 18 (condition -> ( boolean_expr ) .)
+    GREATEREQ       reduce using rule 18 (condition -> ( boolean_expr ) .)
+    AND             reduce using rule 18 (condition -> ( boolean_expr ) .)
+    OR              reduce using rule 18 (condition -> ( boolean_expr ) .)
+    THEN            reduce using rule 18 (condition -> ( boolean_expr ) .)
+    DO              reduce using rule 18 (condition -> ( boolean_expr ) .)
+
+
+state 47
+
+    (45) factor -> ( expression ) .
+
+    *               reduce using rule 45 (factor -> ( expression ) .)
+    /               reduce using rule 45 (factor -> ( expression ) .)
+    DPOINTS         reduce using rule 45 (factor -> ( expression ) .)
+    +               reduce using rule 45 (factor -> ( expression ) .)
+    -               reduce using rule 45 (factor -> ( expression ) .)
+    )               reduce using rule 45 (factor -> ( expression ) .)
+    EQUALS          reduce using rule 45 (factor -> ( expression ) .)
+    NOTEQ           reduce using rule 45 (factor -> ( expression ) .)
+    <               reduce using rule 45 (factor -> ( expression ) .)
+    >               reduce using rule 45 (factor -> ( expression ) .)
+    LESSEQ          reduce using rule 45 (factor -> ( expression ) .)
+    GREATEREQ       reduce using rule 45 (factor -> ( expression ) .)
+    AND             reduce using rule 45 (factor -> ( expression ) .)
+    OR              reduce using rule 45 (factor -> ( expression ) .)
+
+
+state 48
+
+    (19) boolean_expr -> expression relational_operator . expression
+    (37) expression -> . term
+    (38) expression -> . expression + term
+    (39) expression -> . expression - term
+    (40) expression -> . condition
+    (41) term -> . factor
+    (42) term -> . term * factor
+    (43) term -> . term / factor
+    (18) condition -> . ( boolean_expr )
+    (44) factor -> . NUMBER
+    (45) factor -> . ( expression )
+    (46) factor -> . ID
+
+    (               shift and go to state 12
+    NUMBER          shift and go to state 19
+    ID              shift and go to state 32
+
+    expression                     shift and go to state 68
+    term                           shift and go to state 14
+    condition                      shift and go to state 15
+    factor                         shift and go to state 18
+
+state 49
+
+    (20) boolean_expr -> expression EQUALS . expression
+    (33) relational_operator -> EQUALS .
+    (37) expression -> . term
+    (38) expression -> . expression + term
+    (39) expression -> . expression - term
+    (40) expression -> . condition
+    (41) term -> . factor
+    (42) term -> . term * factor
+    (43) term -> . term / factor
+    (18) condition -> . ( boolean_expr )
+    (44) factor -> . NUMBER
+    (45) factor -> . ( expression )
+    (46) factor -> . ID
+
+    (               reduce using rule 33 (relational_operator -> EQUALS .)
+    NUMBER          reduce using rule 33 (relational_operator -> EQUALS .)
+    ID              reduce using rule 33 (relational_operator -> EQUALS .)
+
+  ! (               [ shift and go to state 12 ]
+  ! NUMBER          [ shift and go to state 19 ]
+  ! ID              [ shift and go to state 32 ]
+
+    expression                     shift and go to state 69
+    term                           shift and go to state 14
+    condition                      shift and go to state 15
+    factor                         shift and go to state 18
+
+state 50
+
+    (21) boolean_expr -> expression NOTEQ . expression
+    (34) relational_operator -> NOTEQ .
+    (37) expression -> . term
+    (38) expression -> . expression + term
+    (39) expression -> . expression - term
+    (40) expression -> . condition
+    (41) term -> . factor
+    (42) term -> . term * factor
+    (43) term -> . term / factor
+    (18) condition -> . ( boolean_expr )
+    (44) factor -> . NUMBER
+    (45) factor -> . ( expression )
+    (46) factor -> . ID
+
+    (               reduce using rule 34 (relational_operator -> NOTEQ .)
+    NUMBER          reduce using rule 34 (relational_operator -> NOTEQ .)
+    ID              reduce using rule 34 (relational_operator -> NOTEQ .)
+
+  ! (               [ shift and go to state 12 ]
+  ! NUMBER          [ shift and go to state 19 ]
+  ! ID              [ shift and go to state 32 ]
+
+    expression                     shift and go to state 70
+    term                           shift and go to state 14
+    condition                      shift and go to state 15
+    factor                         shift and go to state 18
+
+state 51
+
+    (22) boolean_expr -> expression < . expression
+    (29) relational_operator -> < .
+    (37) expression -> . term
+    (38) expression -> . expression + term
+    (39) expression -> . expression - term
+    (40) expression -> . condition
+    (41) term -> . factor
+    (42) term -> . term * factor
+    (43) term -> . term / factor
+    (18) condition -> . ( boolean_expr )
+    (44) factor -> . NUMBER
+    (45) factor -> . ( expression )
+    (46) factor -> . ID
+
+    (               reduce using rule 29 (relational_operator -> < .)
+    NUMBER          reduce using rule 29 (relational_operator -> < .)
+    ID              reduce using rule 29 (relational_operator -> < .)
+
+  ! (               [ shift and go to state 12 ]
+  ! NUMBER          [ shift and go to state 19 ]
+  ! ID              [ shift and go to state 32 ]
+
+    expression                     shift and go to state 71
+    term                           shift and go to state 14
+    condition                      shift and go to state 15
+    factor                         shift and go to state 18
+
+state 52
+
+    (23) boolean_expr -> expression > . expression
+    (30) relational_operator -> > .
+    (37) expression -> . term
+    (38) expression -> . expression + term
+    (39) expression -> . expression - term
+    (40) expression -> . condition
+    (41) term -> . factor
+    (42) term -> . term * factor
+    (43) term -> . term / factor
+    (18) condition -> . ( boolean_expr )
+    (44) factor -> . NUMBER
+    (45) factor -> . ( expression )
+    (46) factor -> . ID
+
+    (               reduce using rule 30 (relational_operator -> > .)
+    NUMBER          reduce using rule 30 (relational_operator -> > .)
+    ID              reduce using rule 30 (relational_operator -> > .)
+
+  ! (               [ shift and go to state 12 ]
+  ! NUMBER          [ shift and go to state 19 ]
+  ! ID              [ shift and go to state 32 ]
+
+    expression                     shift and go to state 72
+    term                           shift and go to state 14
+    condition                      shift and go to state 15
+    factor                         shift and go to state 18
+
+state 53
+
+    (24) boolean_expr -> expression LESSEQ . expression
+    (31) relational_operator -> LESSEQ .
+    (37) expression -> . term
+    (38) expression -> . expression + term
+    (39) expression -> . expression - term
+    (40) expression -> . condition
+    (41) term -> . factor
+    (42) term -> . term * factor
+    (43) term -> . term / factor
+    (18) condition -> . ( boolean_expr )
+    (44) factor -> . NUMBER
+    (45) factor -> . ( expression )
+    (46) factor -> . ID
+
+    (               reduce using rule 31 (relational_operator -> LESSEQ .)
+    NUMBER          reduce using rule 31 (relational_operator -> LESSEQ .)
+    ID              reduce using rule 31 (relational_operator -> LESSEQ .)
+
+  ! (               [ shift and go to state 12 ]
+  ! NUMBER          [ shift and go to state 19 ]
+  ! ID              [ shift and go to state 32 ]
+
+    expression                     shift and go to state 73
+    term                           shift and go to state 14
+    condition                      shift and go to state 15
+    factor                         shift and go to state 18
+
+state 54
+
+    (25) boolean_expr -> expression GREATEREQ . expression
+    (32) relational_operator -> GREATEREQ .
+    (37) expression -> . term
+    (38) expression -> . expression + term
+    (39) expression -> . expression - term
+    (40) expression -> . condition
+    (41) term -> . factor
+    (42) term -> . term * factor
+    (43) term -> . term / factor
+    (18) condition -> . ( boolean_expr )
+    (44) factor -> . NUMBER
+    (45) factor -> . ( expression )
+    (46) factor -> . ID
+
+    (               reduce using rule 32 (relational_operator -> GREATEREQ .)
+    NUMBER          reduce using rule 32 (relational_operator -> GREATEREQ .)
+    ID              reduce using rule 32 (relational_operator -> GREATEREQ .)
+
+  ! (               [ shift and go to state 12 ]
+  ! NUMBER          [ shift and go to state 19 ]
+  ! ID              [ shift and go to state 32 ]
+
+    expression                     shift and go to state 74
+    term                           shift and go to state 14
+    condition                      shift and go to state 15
+    factor                         shift and go to state 18
+
+state 55
+
+    (26) boolean_expr -> expression AND . expression
+    (37) expression -> . term
+    (38) expression -> . expression + term
+    (39) expression -> . expression - term
+    (40) expression -> . condition
+    (41) term -> . factor
+    (42) term -> . term * factor
+    (43) term -> . term / factor
+    (18) condition -> . ( boolean_expr )
+    (44) factor -> . NUMBER
+    (45) factor -> . ( expression )
+    (46) factor -> . ID
+
+    (               shift and go to state 12
+    NUMBER          shift and go to state 19
+    ID              shift and go to state 32
+
+    expression                     shift and go to state 75
+    term                           shift and go to state 14
+    condition                      shift and go to state 15
+    factor                         shift and go to state 18
+
+state 56
+
+    (27) boolean_expr -> expression OR . expression
+    (37) expression -> . term
+    (38) expression -> . expression + term
+    (39) expression -> . expression - term
+    (40) expression -> . condition
+    (41) term -> . factor
+    (42) term -> . term * factor
+    (43) term -> . term / factor
+    (18) condition -> . ( boolean_expr )
+    (44) factor -> . NUMBER
+    (45) factor -> . ( expression )
+    (46) factor -> . ID
+
+    (               shift and go to state 12
+    NUMBER          shift and go to state 19
+    ID              shift and go to state 32
+
+    expression                     shift and go to state 76
+    term                           shift and go to state 14
+    condition                      shift and go to state 15
+    factor                         shift and go to state 18
+
+state 57
+
+    (28) boolean_expr -> NOT expression .
+    (38) expression -> expression . + term
+    (39) expression -> expression . - term
+
+    )               reduce using rule 28 (boolean_expr -> NOT expression .)
+    DPOINTS         reduce using rule 28 (boolean_expr -> NOT expression .)
+    +               shift and go to state 25
+    -               shift and go to state 26
+
+
+state 58
+
+    (13) capture -> CAPTURE ( ID . )
+
+    )               shift and go to state 77
+
+
+state 59
+
+    (42) term -> term * factor .
+
+    *               reduce using rule 42 (term -> term * factor .)
+    /               reduce using rule 42 (term -> term * factor .)
+    DPOINTS         reduce using rule 42 (term -> term * factor .)
+    +               reduce using rule 42 (term -> term * factor .)
+    -               reduce using rule 42 (term -> term * factor .)
+    )               reduce using rule 42 (term -> term * factor .)
+    EQUALS          reduce using rule 42 (term -> term * factor .)
+    NOTEQ           reduce using rule 42 (term -> term * factor .)
+    <               reduce using rule 42 (term -> term * factor .)
+    >               reduce using rule 42 (term -> term * factor .)
+    LESSEQ          reduce using rule 42 (term -> term * factor .)
+    GREATEREQ       reduce using rule 42 (term -> term * factor .)
+    AND             reduce using rule 42 (term -> term * factor .)
+    OR              reduce using rule 42 (term -> term * factor .)
+
+
+state 60
+
+    (43) term -> term / factor .
+
+    *               reduce using rule 43 (term -> term / factor .)
+    /               reduce using rule 43 (term -> term / factor .)
+    DPOINTS         reduce using rule 43 (term -> term / factor .)
+    +               reduce using rule 43 (term -> term / factor .)
+    -               reduce using rule 43 (term -> term / factor .)
+    )               reduce using rule 43 (term -> term / factor .)
+    EQUALS          reduce using rule 43 (term -> term / factor .)
+    NOTEQ           reduce using rule 43 (term -> term / factor .)
+    <               reduce using rule 43 (term -> term / factor .)
+    >               reduce using rule 43 (term -> term / factor .)
+    LESSEQ          reduce using rule 43 (term -> term / factor .)
+    GREATEREQ       reduce using rule 43 (term -> term / factor .)
+    AND             reduce using rule 43 (term -> term / factor .)
+    OR              reduce using rule 43 (term -> term / factor .)
+
+
+state 61
+
+    (15) if_statement -> IF condition THEN . statement_list opt_else ENDIF
+    (2) statement_list -> . statement
+    (3) statement_list -> . statement statement_list
+    (4) statement -> . assignment DPOINTS
+    (5) statement -> . write DPOINTS
+    (6) statement -> . capture DPOINTS
+    (7) statement -> . expression DPOINTS
+    (8) statement -> . if_statement
+    (9) statement -> . while_statement
+    (35) assignment -> . ID ASSIGN expression
+    (36) assignment -> . ID ASSIGN boolean_expr
+    (10) write -> . WRITE ( STRING )
+    (11) write -> . WRITE ( expression )
+    (12) write -> . WRITE ( STRING , expression )
+    (13) capture -> . CAPTURE ( ID )
+    (37) expression -> . term
+    (38) expression -> . expression + term
+    (39) expression -> . expression - term
+    (40) expression -> . condition
+    (15) if_statement -> . IF condition THEN statement_list opt_else ENDIF
+    (14) while_statement -> . WHILE condition DO statement_list ENDWHILE
+    (41) term -> . factor
+    (42) term -> . term * factor
+    (43) term -> . term / factor
+    (18) condition -> . ( boolean_expr )
+    (44) factor -> . NUMBER
+    (45) factor -> . ( expression )
+    (46) factor -> . ID
+
+    ID              shift and go to state 10
+    WRITE           shift and go to state 11
+    CAPTURE         shift and go to state 13
+    IF              shift and go to state 16
+    WHILE           shift and go to state 17
+    (               shift and go to state 12
+    NUMBER          shift and go to state 19
+
+    condition                      shift and go to state 15
+    statement_list                 shift and go to state 78
+    statement                      shift and go to state 3
+    assignment                     shift and go to state 4
+    write                          shift and go to state 5
+    capture                        shift and go to state 6
+    expression                     shift and go to state 7
+    if_statement                   shift and go to state 8
+    while_statement                shift and go to state 9
+    term                           shift and go to state 14
+    factor                         shift and go to state 18
+
+state 62
+
+    (19) boolean_expr -> expression . relational_operator expression
+    (20) boolean_expr -> expression . EQUALS expression
+    (21) boolean_expr -> expression . NOTEQ expression
+    (22) boolean_expr -> expression . < expression
+    (23) boolean_expr -> expression . > expression
+    (24) boolean_expr -> expression . LESSEQ expression
+    (25) boolean_expr -> expression . GREATEREQ expression
+    (26) boolean_expr -> expression . AND expression
+    (27) boolean_expr -> expression . OR expression
+    (38) expression -> expression . + term
+    (39) expression -> expression . - term
+    (29) relational_operator -> . <
+    (30) relational_operator -> . >
+    (31) relational_operator -> . LESSEQ
+    (32) relational_operator -> . GREATEREQ
+    (33) relational_operator -> . EQUALS
+    (34) relational_operator -> . NOTEQ
+
+    EQUALS          shift and go to state 49
+    NOTEQ           shift and go to state 50
+    <               shift and go to state 51
+    >               shift and go to state 52
+    LESSEQ          shift and go to state 53
+    GREATEREQ       shift and go to state 54
+    AND             shift and go to state 55
+    OR              shift and go to state 56
+    +               shift and go to state 25
+    -               shift and go to state 26
+
+    relational_operator            shift and go to state 48
+
+state 63
+
+    (14) while_statement -> WHILE condition DO . statement_list ENDWHILE
+    (2) statement_list -> . statement
+    (3) statement_list -> . statement statement_list
+    (4) statement -> . assignment DPOINTS
+    (5) statement -> . write DPOINTS
+    (6) statement -> . capture DPOINTS
+    (7) statement -> . expression DPOINTS
+    (8) statement -> . if_statement
+    (9) statement -> . while_statement
+    (35) assignment -> . ID ASSIGN expression
+    (36) assignment -> . ID ASSIGN boolean_expr
+    (10) write -> . WRITE ( STRING )
+    (11) write -> . WRITE ( expression )
+    (12) write -> . WRITE ( STRING , expression )
+    (13) capture -> . CAPTURE ( ID )
+    (37) expression -> . term
+    (38) expression -> . expression + term
+    (39) expression -> . expression - term
+    (40) expression -> . condition
+    (15) if_statement -> . IF condition THEN statement_list opt_else ENDIF
+    (14) while_statement -> . WHILE condition DO statement_list ENDWHILE
+    (41) term -> . factor
+    (42) term -> . term * factor
+    (43) term -> . term / factor
+    (18) condition -> . ( boolean_expr )
+    (44) factor -> . NUMBER
+    (45) factor -> . ( expression )
+    (46) factor -> . ID
+
+    ID              shift and go to state 10
+    WRITE           shift and go to state 11
+    CAPTURE         shift and go to state 13
+    IF              shift and go to state 16
+    WHILE           shift and go to state 17
+    (               shift and go to state 12
+    NUMBER          shift and go to state 19
+
+    condition                      shift and go to state 15
+    statement_list                 shift and go to state 79
+    statement                      shift and go to state 3
+    assignment                     shift and go to state 4
+    write                          shift and go to state 5
+    capture                        shift and go to state 6
+    expression                     shift and go to state 7
+    if_statement                   shift and go to state 8
+    while_statement                shift and go to state 9
+    term                           shift and go to state 14
+    factor                         shift and go to state 18
+
+state 64
+
+    (45) factor -> ( expression . )
+    (38) expression -> expression . + term
+    (39) expression -> expression . - term
+
+    )               shift and go to state 47
+    +               shift and go to state 25
+    -               shift and go to state 26
+
+
+state 65
+
+    (10) write -> WRITE ( STRING ) .
+
+    DPOINTS         reduce using rule 10 (write -> WRITE ( STRING ) .)
+
+
+state 66
+
+    (12) write -> WRITE ( STRING , . expression )
+    (37) expression -> . term
+    (38) expression -> . expression + term
+    (39) expression -> . expression - term
+    (40) expression -> . condition
+    (41) term -> . factor
+    (42) term -> . term * factor
+    (43) term -> . term / factor
+    (18) condition -> . ( boolean_expr )
+    (44) factor -> . NUMBER
+    (45) factor -> . ( expression )
+    (46) factor -> . ID
+
+    (               shift and go to state 12
+    NUMBER          shift and go to state 19
+    ID              shift and go to state 32
+
+    expression                     shift and go to state 80
+    term                           shift and go to state 14
+    condition                      shift and go to state 15
+    factor                         shift and go to state 18
+
+state 67
+
+    (11) write -> WRITE ( expression ) .
+
+    DPOINTS         reduce using rule 11 (write -> WRITE ( expression ) .)
+
+
+state 68
+
+    (19) boolean_expr -> expression relational_operator expression .
+    (38) expression -> expression . + term
+    (39) expression -> expression . - term
+
+    )               reduce using rule 19 (boolean_expr -> expression relational_operator expression .)
+    DPOINTS         reduce using rule 19 (boolean_expr -> expression relational_operator expression .)
+    +               shift and go to state 25
+    -               shift and go to state 26
+
+
+state 69
+
+    (20) boolean_expr -> expression EQUALS expression .
+    (38) expression -> expression . + term
+    (39) expression -> expression . - term
+
+    )               reduce using rule 20 (boolean_expr -> expression EQUALS expression .)
+    DPOINTS         reduce using rule 20 (boolean_expr -> expression EQUALS expression .)
+    +               shift and go to state 25
+    -               shift and go to state 26
+
+
+state 70
+
+    (21) boolean_expr -> expression NOTEQ expression .
+    (38) expression -> expression . + term
+    (39) expression -> expression . - term
+
+    )               reduce using rule 21 (boolean_expr -> expression NOTEQ expression .)
+    DPOINTS         reduce using rule 21 (boolean_expr -> expression NOTEQ expression .)
+    +               shift and go to state 25
+    -               shift and go to state 26
+
+
+state 71
+
+    (22) boolean_expr -> expression < expression .
+    (38) expression -> expression . + term
+    (39) expression -> expression . - term
+
+    )               reduce using rule 22 (boolean_expr -> expression < expression .)
+    DPOINTS         reduce using rule 22 (boolean_expr -> expression < expression .)
+    +               shift and go to state 25
+    -               shift and go to state 26
+
+
+state 72
+
+    (23) boolean_expr -> expression > expression .
+    (38) expression -> expression . + term
+    (39) expression -> expression . - term
+
+    )               reduce using rule 23 (boolean_expr -> expression > expression .)
+    DPOINTS         reduce using rule 23 (boolean_expr -> expression > expression .)
+    +               shift and go to state 25
+    -               shift and go to state 26
+
+
+state 73
+
+    (24) boolean_expr -> expression LESSEQ expression .
+    (38) expression -> expression . + term
+    (39) expression -> expression . - term
+
+    )               reduce using rule 24 (boolean_expr -> expression LESSEQ expression .)
+    DPOINTS         reduce using rule 24 (boolean_expr -> expression LESSEQ expression .)
+    +               shift and go to state 25
+    -               shift and go to state 26
+
+
+state 74
+
+    (25) boolean_expr -> expression GREATEREQ expression .
+    (38) expression -> expression . + term
+    (39) expression -> expression . - term
+
+    )               reduce using rule 25 (boolean_expr -> expression GREATEREQ expression .)
+    DPOINTS         reduce using rule 25 (boolean_expr -> expression GREATEREQ expression .)
+    +               shift and go to state 25
+    -               shift and go to state 26
+
+
+state 75
+
+    (26) boolean_expr -> expression AND expression .
+    (38) expression -> expression . + term
+    (39) expression -> expression . - term
+
+    )               reduce using rule 26 (boolean_expr -> expression AND expression .)
+    DPOINTS         reduce using rule 26 (boolean_expr -> expression AND expression .)
+    +               shift and go to state 25
+    -               shift and go to state 26
+
+
+state 76
+
+    (27) boolean_expr -> expression OR expression .
+    (38) expression -> expression . + term
+    (39) expression -> expression . - term
+
+    )               reduce using rule 27 (boolean_expr -> expression OR expression .)
+    DPOINTS         reduce using rule 27 (boolean_expr -> expression OR expression .)
+    +               shift and go to state 25
+    -               shift and go to state 26
+
+
+state 77
+
+    (13) capture -> CAPTURE ( ID ) .
+
+    DPOINTS         reduce using rule 13 (capture -> CAPTURE ( ID ) .)
+
+
+state 78
+
+    (15) if_statement -> IF condition THEN statement_list . opt_else ENDIF
+    (16) opt_else -> . ELSE statement_list
+    (17) opt_else -> . empty
+    (47) empty -> .
+
+    ELSE            shift and go to state 82
+    ENDIF           reduce using rule 47 (empty -> .)
+
+    opt_else                       shift and go to state 81
+    empty                          shift and go to state 83
+
+state 79
+
+    (14) while_statement -> WHILE condition DO statement_list . ENDWHILE
+
+    ENDWHILE        shift and go to state 84
+
+
+state 80
+
+    (12) write -> WRITE ( STRING , expression . )
+    (38) expression -> expression . + term
+    (39) expression -> expression . - term
+
+    )               shift and go to state 85
+    +               shift and go to state 25
+    -               shift and go to state 26
+
+
+state 81
+
+    (15) if_statement -> IF condition THEN statement_list opt_else . ENDIF
+
+    ENDIF           shift and go to state 86
+
+
+state 82
+
+    (16) opt_else -> ELSE . statement_list
+    (2) statement_list -> . statement
+    (3) statement_list -> . statement statement_list
+    (4) statement -> . assignment DPOINTS
+    (5) statement -> . write DPOINTS
+    (6) statement -> . capture DPOINTS
+    (7) statement -> . expression DPOINTS
+    (8) statement -> . if_statement
+    (9) statement -> . while_statement
+    (35) assignment -> . ID ASSIGN expression
+    (36) assignment -> . ID ASSIGN boolean_expr
+    (10) write -> . WRITE ( STRING )
+    (11) write -> . WRITE ( expression )
+    (12) write -> . WRITE ( STRING , expression )
+    (13) capture -> . CAPTURE ( ID )
+    (37) expression -> . term
+    (38) expression -> . expression + term
+    (39) expression -> . expression - term
+    (40) expression -> . condition
+    (15) if_statement -> . IF condition THEN statement_list opt_else ENDIF
+    (14) while_statement -> . WHILE condition DO statement_list ENDWHILE
+    (41) term -> . factor
+    (42) term -> . term * factor
+    (43) term -> . term / factor
+    (18) condition -> . ( boolean_expr )
+    (44) factor -> . NUMBER
+    (45) factor -> . ( expression )
+    (46) factor -> . ID
+
+    ID              shift and go to state 10
+    WRITE           shift and go to state 11
+    CAPTURE         shift and go to state 13
+    IF              shift and go to state 16
+    WHILE           shift and go to state 17
+    (               shift and go to state 12
+    NUMBER          shift and go to state 19
+
+    statement_list                 shift and go to state 87
+    statement                      shift and go to state 3
+    assignment                     shift and go to state 4
+    write                          shift and go to state 5
+    capture                        shift and go to state 6
+    expression                     shift and go to state 7
+    if_statement                   shift and go to state 8
+    while_statement                shift and go to state 9
+    term                           shift and go to state 14
+    condition                      shift and go to state 15
+    factor                         shift and go to state 18
+
+state 83
+
+    (17) opt_else -> empty .
+
+    ENDIF           reduce using rule 17 (opt_else -> empty .)
+
+
+state 84
+
+    (14) while_statement -> WHILE condition DO statement_list ENDWHILE .
+
+    ID              reduce using rule 14 (while_statement -> WHILE condition DO statement_list ENDWHILE .)
+    WRITE           reduce using rule 14 (while_statement -> WHILE condition DO statement_list ENDWHILE .)
+    CAPTURE         reduce using rule 14 (while_statement -> WHILE condition DO statement_list ENDWHILE .)
+    IF              reduce using rule 14 (while_statement -> WHILE condition DO statement_list ENDWHILE .)
+    WHILE           reduce using rule 14 (while_statement -> WHILE condition DO statement_list ENDWHILE .)
+    (               reduce using rule 14 (while_statement -> WHILE condition DO statement_list ENDWHILE .)
+    NUMBER          reduce using rule 14 (while_statement -> WHILE condition DO statement_list ENDWHILE .)
+    $end            reduce using rule 14 (while_statement -> WHILE condition DO statement_list ENDWHILE .)
+    ELSE            reduce using rule 14 (while_statement -> WHILE condition DO statement_list ENDWHILE .)
+    ENDIF           reduce using rule 14 (while_statement -> WHILE condition DO statement_list ENDWHILE .)
+    ENDWHILE        reduce using rule 14 (while_statement -> WHILE condition DO statement_list ENDWHILE .)
+
+
+state 85
+
+    (12) write -> WRITE ( STRING , expression ) .
+
+    DPOINTS         reduce using rule 12 (write -> WRITE ( STRING , expression ) .)
+
+
+state 86
+
+    (15) if_statement -> IF condition THEN statement_list opt_else ENDIF .
+
+    ID              reduce using rule 15 (if_statement -> IF condition THEN statement_list opt_else ENDIF .)
+    WRITE           reduce using rule 15 (if_statement -> IF condition THEN statement_list opt_else ENDIF .)
+    CAPTURE         reduce using rule 15 (if_statement -> IF condition THEN statement_list opt_else ENDIF .)
+    IF              reduce using rule 15 (if_statement -> IF condition THEN statement_list opt_else ENDIF .)
+    WHILE           reduce using rule 15 (if_statement -> IF condition THEN statement_list opt_else ENDIF .)
+    (               reduce using rule 15 (if_statement -> IF condition THEN statement_list opt_else ENDIF .)
+    NUMBER          reduce using rule 15 (if_statement -> IF condition THEN statement_list opt_else ENDIF .)
+    $end            reduce using rule 15 (if_statement -> IF condition THEN statement_list opt_else ENDIF .)
+    ELSE            reduce using rule 15 (if_statement -> IF condition THEN statement_list opt_else ENDIF .)
+    ENDIF           reduce using rule 15 (if_statement -> IF condition THEN statement_list opt_else ENDIF .)
+    ENDWHILE        reduce using rule 15 (if_statement -> IF condition THEN statement_list opt_else ENDIF .)
+
+
+state 87
+
+    (16) opt_else -> ELSE statement_list .
+
+    ENDIF           reduce using rule 16 (opt_else -> ELSE statement_list .)
+
