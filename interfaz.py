@@ -339,7 +339,12 @@ consola = ui.log().classes("w-full h-48 mt-6 bg-black text-green-400 font-mono r
 
 
 # --------------- Iniciar servidor web local -------------------
-ui.run()
+#ui.run()
 
 # ---------------- Iniciar servidor web en render -----------------
 #ui.run(host="0.0.0.0", port=int(os.environ.get("PORT", 8080)))
+
+if __name__ == '__main__':
+    port = int(os.environ.get("PORT", 8080))
+    ui.run(host="0.0.0.0", port=port, title="Mi Aplicación NiceGUI", reload=False)
+
